@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Lab5_Devdutt {
+public class Lab5_Devdutt_String_Manipulation {
 
 	public static void main(String[] args) {
 
@@ -41,10 +41,6 @@ public class Lab5_Devdutt {
 			}
 			
 		}
-		
-		
-		
-		//System.out.println(""+map.values());
 		
 		System.out.println(map.get(minSize));
 		
