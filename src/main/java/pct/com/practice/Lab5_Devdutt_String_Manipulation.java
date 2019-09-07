@@ -70,14 +70,6 @@ public class Lab5_Devdutt_String_Manipulation {
 		
 		for(int i = 0; i < letters.length(); i++) {
 			
-			/*for(int j = 0; j < subString.length(); j++) {
-				
-				if(letters.charAt(i) == subString.charAt(j)) {
-					
-					match++;
-					break;
-				}
-			}*/
 			
 			if(sb.toString().contains(Character.toString(letters.charAt(i)))) {
 				int index = sb.indexOf(Character.toString(letters.charAt(i)));
