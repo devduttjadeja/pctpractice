@@ -1,4 +1,4 @@
-package pct.com.practice;
+package pct.com.solutions;
 
 
 import java.util.ArrayList;
