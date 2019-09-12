@@ -130,6 +130,9 @@ public class Find_Bridges_In_Graph {
 		if(parent.equals(node)) {
 			parent = stack.pop();
 		}
+		if(stack.empty()) {
+			stack.push(parent);
+		}
 		
 		
 		int smallestTime = getSmallestTimeFromAdjacentNodeExceptParent(node,parent);
