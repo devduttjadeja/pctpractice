@@ -39,7 +39,7 @@ public class Lab4_Devdutt_Tree_AVL_PreOrder {
 		
 		if(isAVL(root)) {
 			traversPreOrder(root);
-			System.out.println(sb.toString());
+			System.out.println(sb.toString().trim());
 		} else {
 			System.out.println("NOT");
 		}

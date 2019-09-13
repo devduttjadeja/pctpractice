@@ -11,6 +11,7 @@ import java.util.Stack;
 
 /*
 
+input
 5
 6
 a b
@@ -19,6 +20,9 @@ b c
 b d
 d e
 e b
+
+output
+
 
  */
 public class Find_Cycle_In_Directed_Graph {
@@ -30,6 +34,7 @@ public class Find_Cycle_In_Directed_Graph {
 	private static String parent;
 	private static Map<String,String> nodeFlag = new HashMap<>();
 	private static boolean isCycleDetected = false;
+	private static int cycleCount = 0;
 	
 	public static void main(String[] args) {
 
@@ -47,7 +52,7 @@ public class Find_Cycle_In_Directed_Graph {
 		}
 		
 		
-		initializeNodeFlag();
+		
 		
 		for (Entry<String, ArrayList<String>> entry : map.entrySet()) {
 			
@@ -58,10 +63,14 @@ public class Find_Cycle_In_Directed_Graph {
 				DFSTraversalToDetectCycleInDirectedGraph(rootNode,rootNode);
 				
 			}
+			
+			initializeNodeFlag();
 		}
 		
 		
 		System.out.println("numberOfVertices -- "+numberOfVertices);
+		System.out.println("cycleCount --"+cycleCount);
+		System.out.println("cycleDetected -- "+isCycleDetected);
 		
 		sc.close();
 		
@@ -95,6 +104,7 @@ public class Find_Cycle_In_Directed_Graph {
 				if(nodeFlag.get(adjacentNode).equals("0")) {
 					
 					isCycleDetected = true;
+					cycleCount ++;
 					printCycle(node,adjacentNode);
 				}
 				
