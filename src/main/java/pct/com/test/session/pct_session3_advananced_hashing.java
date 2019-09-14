@@ -59,7 +59,7 @@ public class pct_session3_advananced_hashing {
 		//int tempNumber = number;
 
 		if (array[index] == null) {
-			array[index]= originalNumber;
+			array[index] = originalNumber;
 			indexList.add(index);
 		} else {
 			indexList.add(index);
@@ -76,7 +76,6 @@ public class pct_session3_advananced_hashing {
 					return indexList;
 				}
 				
-				
 			}
 			
 			number = number / 10;
@@ -86,7 +85,7 @@ public class pct_session3_advananced_hashing {
 
 				// move newJ location fwd from index
 				int newLocation;
-				if(index + newJ > 6) {
+				if(index + newJ > size-1) {
 					newLocation = (index + newJ) - size;
 				}else {
 					newLocation = index + newJ;
@@ -100,7 +99,7 @@ public class pct_session3_advananced_hashing {
 
 				// move newJ location back from index
 				int newLocation;
-				if (index < newJ) {
+				if (index - newJ < 0) {
 					newLocation = size + (index - newJ);
 				} else {
 					newLocation = index - newJ;
@@ -108,7 +107,6 @@ public class pct_session3_advananced_hashing {
 				
 				insertNumberInArrayAndGetIndexList(number, newLocation,originalNumber);
 				
-
 			}
 
 		}
