@@ -79,6 +79,7 @@ public class Find_Bridges_In_Graph {
 		findBridges(); 
 		
 		System.out.println(bridge+" "+maxNodeBridge);
+		System.out.println(numberofVertice);
 		
 		sc.close();
 	}

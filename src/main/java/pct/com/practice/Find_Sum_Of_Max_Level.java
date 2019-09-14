@@ -1,138 +1,156 @@
 package pct.com.practice;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
+import java.util.Scanner;
 
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
-}
+/*
+ 
+input
+9
+1 2 5 3 6 4 -10 7 8
 
-class Solution {
-    
-    Map<Integer, Integer> mapNodeHeight = new HashMap<>();
-	private int height = 0;
+level traversal : 1 -10 2 5 3 6 4 7 8 
+maps of height and nodes : {1=[8], 2=[4, 7], 3=[3, 6], 4=[5], 5=[-10, 2], 6=[1]}
 
-	public int maxLevelSum(TreeNode root) {
+output
+11
+ 
+ */
+public class Find_Sum_Of_Max_Level {
+
+	private static int maxSum = 0;
+	private static Map<Integer,ArrayList<Integer>> mapHeightNodes = new HashMap<>();
+
+	public static void main(String[] args) {
 		
-		preOrderTraversal(root);
+		Scanner scan = new Scanner(System.in);
 		
-		int sum=0;
-		Collection<Integer> levels = mapNodeHeight.values();
-		ArrayList<Integer> sumList = new ArrayList<>();
+		int t = scan.nextInt();
 		
-		for (Integer level : levels) {
-			
-			for (Map.Entry<Integer, Integer> entry : mapNodeHeight.entrySet()) {
-				
-				if(entry.getValue().equals(level)) {
-					
-					sum = sum + entry.getValue();
-					
-				}
-			}
-			
-			sumList.add(sum);
+		Node root = null;
+		
+		while (t-- > 0) {
+			int data = scan.nextInt();
+			root = insert(root, data);
 		}
 		
-		Integer max = Collections.max(sumList);
+		levelOrder(root);
 		
-		return max;
-    
-    }
-    
-    
-    private void preOrderTraversal(TreeNode node){
-        
+		int height = getHeight(root);
 		
+		preOrderTraversalAndCreateMapHeightNodes(height,root);
 		
+		System.out.println(mapHeightNodes);
+			
+		
+		for (Map.Entry<Integer, ArrayList<Integer>> entry : mapHeightNodes.entrySet()) {
+			
+			entry.getKey();
+			int sum = findSum(entry.getValue());
+			
+			if(sum > maxSum) {
+				maxSum = sum;
+			}
+			
+		}
+		
+		System.out.println(maxSum);
+		
+		scan.close();
+		
+	}
+
+
+
+	
+	private static int findSum(ArrayList<Integer> values) {
+
+		int sum = 0;
+		
+		for (Integer integer : values) {
+			
+			sum = sum + integer;
+		}
+		
+		return sum;
+	}
+
+
+
+
+	private static void preOrderTraversalAndCreateMapHeightNodes(int height, Node node) {
+
 		if(node == null) {
+			return;
+		} else {
+			
+			if(mapHeightNodes.containsKey(height)) {
+				mapHeightNodes.get(height).add(node.data);
+			}else {
+				ArrayList<Integer> al = new ArrayList<>();
+				al.add(node.data);
+				mapHeightNodes.put(height,al);
+			}
+				
+			
+			preOrderTraversalAndCreateMapHeightNodes(height-1, node.left);
+			preOrderTraversalAndCreateMapHeightNodes(height-1, node.right);
+			
+			
+		}
+		
+		
+		
+	}
+
+	private static void levelOrder(Node root) {
+	
+		if (root == null) {
 			return;
 		}
 		
-		Integer h = getHeight(node);
-		
-        mapNodeHeight.put(node.val,h);
-        //System.out.println("");
-        preOrderTraversal(node.left);
-        preOrderTraversal(node.right);
-        
-    }
-    
-    private Integer getHeight(TreeNode node) {
-		
-    	height  = height + 1;
-		return height;
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(root);
+		while (q.peek() != null) {
+			Node temp = q.remove();
+			System.out.print(temp.data + " ");
+			if (temp.left != null)
+				q.add(temp.left);
+			if (temp.right != null)
+				q.add(temp.right);
+		}
+		System.out.println("");
+	
 	}
-}
 
-public class Find_Sum_Of_Max_Level {
-    public static TreeNode stringToTreeNode(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return null;
-        }
-    
-        String[] parts = input.split(",");
-        String item = parts[0];
-        TreeNode root = new TreeNode(Integer.parseInt(item));
-        Queue<TreeNode> nodeQueue = new LinkedList<>();
-        nodeQueue.add(root);
-    
-        int index = 1;
-        while(!nodeQueue.isEmpty()) {
-            TreeNode node = nodeQueue.remove();
-    
-            if (index == parts.length) {
-                break;
-            }
-    
-            item = parts[index++];
-            item = item.trim();
-            if (!item.equals("null")) {
-                int leftNumber = Integer.parseInt(item);
-                node.left = new TreeNode(leftNumber);
-                nodeQueue.add(node.left);
-            }
-    
-            if (index == parts.length) {
-                break;
-            }
-    
-            item = parts[index++];
-            item = item.trim();
-            if (!item.equals("null")) {
-                int rightNumber = Integer.parseInt(item);
-                node.right = new TreeNode(rightNumber);
-                nodeQueue.add(node.right);
-            }
-        }
-        return root;
-    }
-    
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            TreeNode root = stringToTreeNode(line);
-            
-            int ret = new Solution().maxLevelSum(root);
-            
-            String out = String.valueOf(ret);
-            
-            System.out.print(out);
-        }
-    }
+	private static int getHeight(Node root) {
+		
+		if(root == null) {
+			return 0;
+		}
+		
+		return 1 + Math.max(getHeight(root.left), getHeight(root.right));
+		
+	}
+
+	private static Node insert(Node root, int data) {
+		if (root == null) {
+			return new Node(data);
+		} else {
+			Node cur;
+			if (data <= root.data) {
+				cur = insert(root.left, data);
+				root.left = cur;
+			} else {
+				cur = insert(root.right, data);
+				root.right = cur;
+			}
+			return root;
+		}
+	}
 }

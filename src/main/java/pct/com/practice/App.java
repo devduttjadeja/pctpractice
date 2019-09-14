@@ -8,6 +8,12 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	String str = "67";
+    	
+    	boolean matches = str.matches("[0-9]+");
+    	
+    	//String string = str.replaceAll("[^a-zA-Z]", " ");
+    	
+        System.out.println(matches);
     }
 }

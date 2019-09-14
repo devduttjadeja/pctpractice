@@ -64,6 +64,7 @@ public class Lab10_Devdutt_CheckPath_Between_Vertex {
 		}
 		
 		System.out.println(sb.toString().trim());
+		System.out.println(vertices);
 		
 		sc.close();
 	}
