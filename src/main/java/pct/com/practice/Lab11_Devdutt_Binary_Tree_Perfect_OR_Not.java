@@ -2,7 +2,7 @@ package pct.com.practice;
 
 import java.util.Scanner;
 
-public class Lab_11_Devdutt_Binary_Tree_Perfect_OR_Not {
+public class Lab11_Devdutt_Binary_Tree_Perfect_OR_Not {
 
 	private static int countLeaf = 0;
 
