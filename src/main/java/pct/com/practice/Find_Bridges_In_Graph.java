@@ -151,15 +151,15 @@ public class Find_Bridges_In_Graph {
 
 	private static int getSmallestTimeFromAdjacentNodeExceptParent(String node, String parent) {
 
-		ArrayList<String> arrayList = map.get(node);
+		ArrayList<String> adjacentNodes = map.get(node);
 		int smallestTime = mapNodeTime.get(node);
 		
-		for (String string : arrayList) {
+		for (String adjacentNode : adjacentNodes) {
 			
-			if(!string.equals(parent)) {
+			if(!adjacentNode.equals(parent)) {
 				
-				if(mapNodeTime.get(string) < smallestTime) {
-					smallestTime = mapNodeTime.get(string);
+				if(mapNodeTime.get(adjacentNode) < smallestTime) {
+					smallestTime = mapNodeTime.get(adjacentNode);
 					mapNodeTime.put(node,smallestTime);
 				}
 				

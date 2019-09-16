@@ -124,7 +124,6 @@ public class Find_Sum_Of_Max_Level {
 			if (temp.right != null)
 				q.add(temp.right);
 		}
-		System.out.println("");
 	
 	}
 
