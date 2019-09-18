@@ -151,6 +151,7 @@ public class Lab7_Devdutt_Family_Tree {
 		
 		String strBoolean = "F";
 
+		// Motilal child Jawahar
 		if(relation.equals("child")) {
 			
 			for (Entry<String, ArrayList<String>> entry : map.entrySet()) {
@@ -174,14 +175,12 @@ public class Lab7_Devdutt_Family_Tree {
 				
 			}
 		} else if(relation.equals("descendant")){
-			
+			//Varun descendant Indira
 			preorderTraverse(strA,strB,root);
 			childList.clear();
 			
 			if(isrelated) {
 				strBoolean = "T";
-				//ancestorFound = false;
-				//descendantFound = false;
 				isrelated = false;
 			}
 			
@@ -192,13 +191,8 @@ public class Lab7_Devdutt_Family_Tree {
 			
 			if(isrelated) {
 				strBoolean = "T";
-				//ancestorFound = false;
-				//descendantFound = false;
 				isrelated = false;
 			}
-			
-			
-			
 		}
 		
 		return strBoolean;
@@ -215,31 +209,16 @@ public class Lab7_Devdutt_Family_Tree {
 			
 			if(ancestor.equals(root.data)) {
 				
-				//ancestorFound = true;
-				//preorderTraverse(descendant, ancestor, root.left);
-				//preorderTraverse(descendant, ancestor, root.right);
-				//return;
 				getAllChildOfAncestor(root);
 				
 				if(childList.contains(descendant)) {
 					isrelated = true;
 				}
-				
 			}
-			
-			//if(ancestorFound 
-			//		&& descendant.equals(root.data)) {
-			//	descendantFound = true;
-			//	return;
-			//}
-			
 			
 			preorderTraverse(descendant, ancestor, root.left);
 			preorderTraverse(descendant, ancestor, root.right);
 		}
-		
-		
-		
 	}
 
 

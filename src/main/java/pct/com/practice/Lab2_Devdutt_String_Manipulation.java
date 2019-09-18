@@ -58,7 +58,7 @@ public class Lab2_Devdutt_String_Manipulation {
 			
 		}
 
-		//System.out.println(al);
+		//System.out.println(al); [a, a., a,a., bc, bc, abcd, abcd, abcd]
 		
 		int ngram = sc.nextInt();
 		

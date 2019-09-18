@@ -4,6 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/*
+
+input
+qploresinazxrhqknhoilerthf
+lion
+
+output
+nhoil
+
+*/
 public class Lab5_Devdutt_String_Manipulation {
 
 	public static void main(String[] args) {

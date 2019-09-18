@@ -16,6 +16,7 @@ public class App
     public static void main( String[] args )
     {
     	String str = "67";
+    	boolean contains = str.contains("6"); // true
     	boolean matches1 = str.matches("[0-9]+"); // true
     	boolean matches2 = str.matches("[0-9]"); // false
     	
