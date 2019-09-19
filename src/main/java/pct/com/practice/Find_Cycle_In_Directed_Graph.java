@@ -11,6 +11,8 @@ import java.util.Stack;
 
 /*
 
+understanding check -- https://www.youtube.com/watch?v=AK7BuT5MgU0
+
 input
 5
 6

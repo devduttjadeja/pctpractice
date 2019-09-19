@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 /*
@@ -35,7 +36,6 @@ public class Find_Nodes_Minimum_Height_Tree {
 
 	private static Map<String,ArrayList<String>> map = new HashMap<>();
 	private static List<String> listLeaf = new ArrayList<>();
-	private static List<String> visitedList = new ArrayList<>();
 	
 	public static void main(String[] args) {
 
@@ -44,24 +44,18 @@ public class Find_Nodes_Minimum_Height_Tree {
 		int numberOfVertices = Integer.parseInt(sc.nextLine());
 		int numberofEdges = Integer.parseInt(sc.nextLine()); 
 		
-		String rootNode = null;
-		
-		
 		for (int i = 0; i < numberofEdges; i++) {
 			
 			String[] strings = sc.nextLine().split("\\s+");
 			
 			addEdgesToGraph(strings[0],strings[1]);
 			
-			if(i == 0) {
-				rootNode = strings[0];
-			}
 			
 		}
 		
 		System.out.println(map);
 		
-		DFSTraversalOfGraphWhichIsTreeToIdentifyLeaf(rootNode);
+		findLeafInMap();
 		
 		listLeaf = getListMHT(numberOfVertices);
 		
@@ -74,20 +68,15 @@ public class Find_Nodes_Minimum_Height_Tree {
 	private static List<String> getListMHT(int numberOfVertices) {
 
 		while( numberOfVertices > 2) {
+			
 			numberOfVertices = numberOfVertices - listLeaf.size();
+			
+			// remove leaf from map and clear listLeaf
 			removeLeafFromGraphTreeMap();
 			
 			// find new leaves and add to listLeaf
+			findLeafInMap();
 			
-			for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
-				
-				if(entry.getValue().size() == 1
-						|| entry.getValue().size() == 0 ) {
-					
-					listLeaf.add(entry.getKey());
-					
-				}
-			}
 		}
 		
 		return listLeaf;
@@ -108,34 +97,17 @@ public class Find_Nodes_Minimum_Height_Tree {
 		
 	}
 
-	private static void DFSTraversalOfGraphWhichIsTreeToIdentifyLeaf(String node) {
+	private static void findLeafInMap() {
 		
-		visitedList.add(node);
-		
-		if(checkLeaf(node)) {
-			listLeaf.add(node);
-		}
-		
-		ArrayList<String> adjacentNodes = map.get(node);
-		
-		for (String adjacentNode : adjacentNodes) {
+		for (Entry<String, ArrayList<String>> entry : map.entrySet()) {
 			
-			if(!visitedList.contains(adjacentNode)) {
-				DFSTraversalOfGraphWhichIsTreeToIdentifyLeaf(adjacentNode);
+			if(entry.getValue().size() == 1
+					|| entry.getValue().size() == 0) {
+				listLeaf.add(entry.getKey());
 			}
 			
 		}
-	}
-
-	private static boolean checkLeaf(String node) {
-
-		boolean isLeaf = false;
 		
-		if(map.get(node).size() == 1) {
-			isLeaf = true;
-		}
-		
-		return isLeaf;
 	}
 
 	private static void addEdgesToGraph(String stra, String strb) {
