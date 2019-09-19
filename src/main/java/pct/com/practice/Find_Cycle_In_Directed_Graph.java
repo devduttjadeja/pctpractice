@@ -1,8 +1,8 @@
 package pct.com.practice;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,8 +30,7 @@ public class Find_Cycle_In_Directed_Graph {
 	private static Map<String,ArrayList<String>> map = new HashMap<>();
 	private static List<String> visitedList = new ArrayList<>();
 	private static Stack<String> stack = new Stack<String>();
-	private static Map<String,String> childParentMap = new LinkedHashMap<>();
-	private static String parent;
+	//private static String parent;
 	private static Map<String,String> nodeFlag = new HashMap<>();
 	private static boolean isCycleDetected = false;
 	private static int cycleCount = 0;
@@ -69,7 +68,7 @@ public class Find_Cycle_In_Directed_Graph {
 		
 		
 		System.out.println("numberOfVertices -- "+numberOfVertices);
-		System.out.println("cycleCount --"+cycleCount);
+		System.out.println("cycleCount -- "+cycleCount);
 		System.out.println("cycleDetected -- "+isCycleDetected);
 		
 		sc.close();
@@ -80,11 +79,10 @@ public class Find_Cycle_In_Directed_Graph {
 	private static void DFSTraversalToDetectCycleInDirectedGraph(String node, String rootNode) {
 		
 		visitedList.add(node);
-		nodeFlag.put(node, "0"); // visited
+		nodeFlag.put(node, "0"); // visited = 0 , unvisted = -1 , visited and popedout = 1
 		
 		stack.push(node);
-		parent = getParent(node);
-		childParentMap.put(node, (node.equals(rootNode))? rootNode:parent );
+		//parent = getParent(node);
 		
 		ArrayList<String> adjacentNodes =  map.get(node);
 		
@@ -122,25 +120,30 @@ public class Find_Cycle_In_Directed_Graph {
 	}
 
 	private static void printCycle(String node, String adjacentNode) {
-
-		System.out.println("cycle -- "+adjacentNode);
+		
+		//node = e		
+		//adjacentNode = b
+		ArrayList<String> al = new ArrayList<>();
 		
 		
-		while(true) {
-			
-			String parent = childParentMap.get(node);
-			
-			System.out.println("cycle -- "+node);
-			
-			if(parent.equals(adjacentNode)) {
-				break;
-			}
-			
-			node = parent;
+		@SuppressWarnings("unchecked")
+		Stack<String> temp = (Stack<String>) stack.clone();
+		
+		while(!adjacentNode.equals(temp.lastElement())) {
+			String pop = temp.pop();
+			//System.out.print(pop+" ");
+			al.add(pop);
 		}
+		//System.out.println(adjacentNode);
+		al.add(adjacentNode);
+		Collections.reverse(al);
+		System.out.println(al);
+		
+		
 		
 	}
 
+/*	
 	private static String getParent(String node) {
 		
 		@SuppressWarnings("unchecked")
@@ -158,7 +161,8 @@ public class Find_Cycle_In_Directed_Graph {
 		
 		return parent;
 	}
-
+*/
+	
 	private static void addEdgesToGraph(String stra, String strb) {
 
 		if(map .containsKey(stra)) {
