@@ -17,18 +17,18 @@ public class Recursive_Algo_Devdutt {
 		
 	}
 
-	private static void allPermutationOfString(char[] line, int i, int length) {
+	private static void allPermutationOfString(char[] line, int i, int lastindex) {
 
-		if(i == length) {
+		if(i == lastindex) {
 			System.out.println(line);
 		}
 		
 		else {
 			
-			for(int j = i; j <= length; j++) {
+			for(int j = i; j <= lastindex; j++) {
 				
 				swap(line,i,j);
-				allPermutationOfString(line,i+1,length);
+				allPermutationOfString(line,i+1,lastindex);
 				swap(line,i,j);
 			}
 			

@@ -100,7 +100,7 @@ public class pct_session3_advananced_hashing {
 				// move newJ location back from index
 				int newLocation;
 				if (index - newJ < 0) {
-					newLocation = size + (index - newJ);
+					newLocation = (index - newJ) + size;
 				} else {
 					newLocation = index - newJ;
 				}
