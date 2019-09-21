@@ -1,10 +1,5 @@
 package pct.com.practice;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-
 /**
  * Hello world!
  *

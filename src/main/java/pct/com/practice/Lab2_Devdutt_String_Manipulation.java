@@ -168,7 +168,7 @@ public class Lab2_Devdutt_String_Manipulation {
 		
 		List<String> al = new ArrayList<String>();
 		
-		for(int i = 0; i < string.length()-ngram+1; i++) {
+		for(int i = 0; i < string.length()-ngram+1; i++) { // string = "abc" , ngram = 2 , al = [ab,bc]
 			
 			StringBuilder sb = new StringBuilder();
 			sb.append(string.charAt(i));

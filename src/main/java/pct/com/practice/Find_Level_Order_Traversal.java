@@ -25,7 +25,7 @@ public class Find_Level_Order_Traversal {
 		
 		Queue<Node> q = new LinkedList<Node>();
 		q.add(root);
-		while (q.peek() != null) {
+		while (!q.isEmpty()) {
 			Node temp = q.remove();
 			System.out.print(temp.data + " ");
 			if (temp.left != null)
