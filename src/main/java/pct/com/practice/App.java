@@ -8,7 +8,8 @@ public class App
 {
 	
 	
-    public static void main( String[] args )
+    @SuppressWarnings("unused")
+	public static void main( String[] args )
     {
     	String str = "67";
     	boolean contains = str.contains("6"); // true
