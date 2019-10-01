@@ -58,7 +58,7 @@ public class Array_Kindergarten_Adventures {
 
 			}
 			
-			Collections.rotate(al, -1);
+			Collections.rotate(al, -1); // rotate to the left
 			map.put(i, complete);
 		}
 		

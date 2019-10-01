@@ -1,5 +1,8 @@
 package geeksforgeeks;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class LinkedList {
 
 	// head of list
@@ -62,7 +65,6 @@ class LinkedList {
 		
 		/* 6. Change the next of last node */
 		last.next = new_node;
-		
 	}
 
 	/*
@@ -145,6 +147,41 @@ class LinkedList {
 		}
 		
 	}
+	
+	public int size() {
+		
+		int length = 0;
+		Node temp = head;
+		
+		while(temp != null) {
+			length++;
+			temp = temp.next;
+		}
+		
+		return length;
+	}
+	
+	
+	public boolean detectLoop() {
+		
+		List<Integer> al = new ArrayList<>();
+		
+		Node temp = head;
+		
+		while(temp != null) {
+			
+			if(al.contains(temp.data)) {
+				return true;
+			}
+			al.add(temp.data);
+			temp = temp.next;
+			
+		}
+		
+		
+		return false;
+	}
+	
 	
 	
 	/* Linked list Node */
