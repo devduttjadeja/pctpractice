@@ -94,7 +94,7 @@ public class Lab9_Devdutt_Find_Shortest_Path_Between_Two_Nodes_In_Tree_Graph {
 
 	private static int getMinimumDistanceFromAllPaths(ArrayList<ArrayList<String>> allpaths, String source, String destination) {
 		
-		int minDistance = 100000;
+		int minDistance = Integer.MAX_VALUE;
 		
 		String originalSource = source;
 		
