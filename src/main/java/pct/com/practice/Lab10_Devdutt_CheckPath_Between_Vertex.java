@@ -61,6 +61,7 @@ public class Lab10_Devdutt_CheckPath_Between_Vertex {
 			
 			
 			destinationFound = false;
+			visitedList.clear();
 		}
 		
 		System.out.println(sb.toString().trim());

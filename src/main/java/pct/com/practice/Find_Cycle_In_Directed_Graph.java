@@ -97,7 +97,7 @@ public class Find_Cycle_In_Directed_Graph {
 			}
 		}
 		
-		
+		// while backtracking if there is an adjacentNode which is VISITED(0)
 		if(adjacentNodes!=null) {
 			for (String adjacentNode : adjacentNodes) {
 
@@ -145,25 +145,6 @@ public class Find_Cycle_In_Directed_Graph {
 		
 	}
 
-/*	
-	private static String getParent(String node) {
-		
-		@SuppressWarnings("unchecked")
-		Stack<String> tempStack = (Stack<String>) stack.clone();
-		
-		parent = stack.pop();
-		if(stack.empty()) {
-			stack.push(parent);
-		}
-		if(parent.equals(node)) {
-			parent = stack.lastElement();
-		}
-		
-		stack = tempStack;
-		
-		return parent;
-	}
-*/
 	
 	private static void addEdgesToGraph(String stra, String strb) {
 

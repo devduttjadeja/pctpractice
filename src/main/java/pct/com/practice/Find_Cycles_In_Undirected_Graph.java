@@ -71,7 +71,7 @@ public class Find_Cycles_In_Undirected_Graph {
 		for (String adjacentNode : adjacentNodes) {
 			
 			if( visitedList.contains(adjacentNode) 
-					&& !adjacentNode.equals(getParent(adjacentNode,node))
+					&& !adjacentNode.equals(getParent(node))
 					&& !nodeCheckedForCycle.contains(adjacentNode)) {
 				
 				cycle++;
@@ -79,19 +79,20 @@ public class Find_Cycles_In_Undirected_Graph {
 			
 		}
 		
-		nodeCheckedForCycle.add(node);
-		String lastElement = stack.pop();
 		
+		String lastElement = stack.pop();
 		if(lastElement.equals(rootnode)) {
 			stack.push(rootnode);
 		}
 	
+		nodeCheckedForCycle.add(node);
+		
 	}
 
 
 	
 	
-	private static String getParent(String adjacentNode, String node) {
+	private static String getParent(String node) {
 
 		@SuppressWarnings("unchecked")
 		Stack<String> tempStack = (Stack<String>) stack.clone();

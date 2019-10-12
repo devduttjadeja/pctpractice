@@ -44,7 +44,7 @@ public class pct_session3_advananced_hashing {
 		}
 
 		for (Integer number : listNumber) {
-			int index = number % 7;
+			int index = number % size;
 			insertNumberInArrayAndGetIndexList(number, index, number);
 			System.out.println(indexList);
 			indexList.clear();

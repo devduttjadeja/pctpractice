@@ -17,19 +17,19 @@ public class Recursive_Algo_Devdutt {
 		
 	}
 
-	private static void allPermutationOfString(char[] line, int i, int lastindex) {
+	private static void allPermutationOfString(char[] line, int firstIndex, int lastindex) {
 
-		if(i == lastindex) {
+		if(firstIndex == lastindex) {
 			System.out.println(line);
 		}
 		
 		else {
 			
-			for(int j = i; j <= lastindex; j++) {
+			for(int j = firstIndex; j <= lastindex; j++) {
 				
-				swap(line,i,j);
-				allPermutationOfString(line,i+1,lastindex);
-				swap(line,i,j);
+				swap(line,firstIndex,j);
+				allPermutationOfString(line,firstIndex+1,lastindex);
+				swap(line,firstIndex,j);
 			}
 			
 		}
@@ -42,6 +42,7 @@ public class Recursive_Algo_Devdutt {
 		char temp = line[i];
 		line[i] = line[j];
 		line[j] = temp;
+		
 	}
 
 
