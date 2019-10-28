@@ -6,7 +6,6 @@ import java.util.Observable;
  * @author Devdutt
  *
  */
-@SuppressWarnings("deprecation")
 public class GunSlinger extends Observable{
 
 	private String state;

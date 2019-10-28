@@ -2,7 +2,6 @@ package midterm;
 
 import java.util.Scanner;
 
-@SuppressWarnings("deprecation")
 public class ObserverDemo extends Object {
 	
 	private DigitalClockView clockView;

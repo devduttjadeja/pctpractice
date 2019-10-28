@@ -44,9 +44,9 @@ public class Prb_3_Longest_Substring {
     		// get all substring of str
     		for (int i = 0; i < str.length(); i++) {
     			
-    			for (int j = i+1; j <= str.length(); j++) {
+    			for (int j = i; j < str.length(); j++) {
 					
-    				String substring = str.substring(i, j);
+    				String substring = str.substring(i, j+1);
     				
     				if(allUniqueCharacter(substring)) {
     					

@@ -5,7 +5,6 @@ package midterm;
 
 import java.util.Observable;
 
-@SuppressWarnings("deprecation")
 class ClockTimerModel extends Observable {
 	 
 	public int GetHour(){return hour;};

@@ -7,7 +7,6 @@ import java.util.Observer;
  * @author Devdutt
  * @see Observer
  */
-@SuppressWarnings("deprecation")
 public class Camera implements Observer{
 
 	private GunSlinger shooter;

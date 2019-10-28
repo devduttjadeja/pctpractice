@@ -1,6 +1,5 @@
 package midterm;
 
-@SuppressWarnings("deprecation")
 public class DuelMovie {
 
 	
