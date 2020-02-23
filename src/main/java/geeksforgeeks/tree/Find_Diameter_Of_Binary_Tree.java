@@ -94,7 +94,6 @@ public class Find_Diameter_Of_Binary_Tree {
 
 			data = parts[index];
 			index++;
-
 			node.left = new Node(Integer.parseInt(data));
 			nodeQueue.add(node.left);
 
@@ -104,7 +103,6 @@ public class Find_Diameter_Of_Binary_Tree {
 
 			data = parts[index];
 			index++;
-
 			node.right = new Node(Integer.parseInt(data));
 			nodeQueue.add(node.right);
 

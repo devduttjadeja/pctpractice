@@ -11,6 +11,10 @@ input
 A B C D E F G
 
 output
+[A, B, D]
+[A, B, E]
+[A, C, F]
+[A, C, G]
 
 */
 public class Find_All_Paths_From_Root_To_Leaves {

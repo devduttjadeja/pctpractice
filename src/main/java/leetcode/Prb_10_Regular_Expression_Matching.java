@@ -51,14 +51,19 @@ public class Prb_10_Regular_Expression_Matching {
 			return string.length() == 0;
 		}
 
-		boolean firstMatch = (string.length() > 0 && string.charAt(0) == pattern.charAt(0))
-									|| pattern.charAt(0) == '.' ;
+		boolean a = string.length() > 0 && string.charAt(0) == pattern.charAt(0);
+		boolean b = pattern.charAt(0) == '.' ;
 		
+		boolean firstMatch = (a || b);
 
+		
 		if(pattern.length()>=2 && pattern.charAt(1) == '*') {
 			
-			return isMatch(string, pattern.substring(2)) 
-					|| ( firstMatch && isMatch(string.substring(1), pattern));
+			boolean c = isMatch(string, pattern.substring(2)); // s = aaaaab , p = c*a*b
+			boolean d = firstMatch && isMatch(string.substring(1), pattern); // s = aa , p = a*
+			
+			return (c || d);  
+					
 			
 		}else {
 			return firstMatch && isMatch(string.substring(1), pattern.substring(1));

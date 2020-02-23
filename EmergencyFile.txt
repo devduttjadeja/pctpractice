@@ -1,0 +1,6 @@
+STARTING BOILER CONTROLLER
+2019-12-19 12:06:04 : class midterm.exceptions.Boiler.OverloadPressureException : 74
+Engaging shutdown procedure.
+2019-12-19 12:06:04 : class midterm.exceptions.Boiler.StuckValveException : stuck
+Evacuation!!
+BOILER CONTROLLER SHUT DOWN
