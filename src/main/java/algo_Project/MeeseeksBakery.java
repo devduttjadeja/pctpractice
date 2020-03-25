@@ -16,7 +16,7 @@ public class MeeseeksBakery {
 		Scanner sc = new Scanner(System.in);
 		int n = Integer.parseInt(sc.nextLine());
 		
-		long start = System.currentTimeMillis();
+		//long start = System.currentTimeMillis();
 		
 		int count = 0;
 		queueIDList = new ArrayList<>(n);
@@ -62,9 +62,9 @@ public class MeeseeksBakery {
 		
 		
 		System.out.println(count);
-		long end = System.currentTimeMillis();
 		
-		System.out.println(end - start);
+		//long end = System.currentTimeMillis();
+		//System.out.println(end - start);
 		
 	}
 
