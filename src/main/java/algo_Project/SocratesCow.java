@@ -1,4 +1,4 @@
-package Algo_Project;
+package algo_Project;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +13,7 @@ public class SocratesCow {
 	private static Map<String, HashMap<String, Integer>> graph = new HashMap<>();
 	private static Map<String,Integer> distanceFromSourceMap = new HashMap<>();
 	private static List<String> visitedList = new ArrayList<>();
-	private static PriorityQueue<Node> queue = new PriorityQueue<Node>();
+	private static PriorityQueue<Node> queue = new PriorityQueue<Node>(5);
 	
 	public static void main(String[] args) {
 
