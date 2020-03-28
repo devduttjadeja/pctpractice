@@ -2,13 +2,13 @@ package algo_Project;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class MeeseeksBakery {
 
-	private static ArrayList<LinkedList<Integer>> queueIDList;
+	private static ArrayList<ArrayList<Integer>> queueIDList;
 	private static int minPatientLevel;
+	private static int count = 0;
 	
 	public static void main(String[] args) {
 
@@ -16,9 +16,6 @@ public class MeeseeksBakery {
 		Scanner sc = new Scanner(System.in);
 		int n = Integer.parseInt(sc.nextLine());
 		
-		//long start = System.currentTimeMillis();
-		
-		int count = 0;
 		queueIDList = new ArrayList<>(n);
 		
 		for (int i = 0; i < n; i++) {
@@ -26,7 +23,7 @@ public class MeeseeksBakery {
 			String[] data = sc.nextLine().split("\\s+");
 			
 			int sizeOfQueue = Integer.parseInt(data[0]);
-			LinkedList<Integer> queue = new LinkedList<>();
+			ArrayList<Integer> queue = new ArrayList<>(sizeOfQueue);
 					
 			for (int j = 1; j <= sizeOfQueue; j++) {
 				
@@ -41,18 +38,15 @@ public class MeeseeksBakery {
 
 		sc.close();
 
+		// long start = System.currentTimeMillis();
 		
 		while(!queueIDList.isEmpty()) {
 			
-			LinkedList<Integer> queue = findQueueHavingCustomerWithMinimumPatienceLevel();
+			ArrayList<Integer> queue = findQueueHavingCustomerWithMinimumPatienceLevel();
 			
-			if(count >= minPatientLevel) {
+			if(queue == null) {
 				break;
 			}
-			
-			count++;
-			
-			queue.removeFirst();
 
 			if(queue.isEmpty()) {
 				queueIDList.remove(queue);
@@ -63,29 +57,52 @@ public class MeeseeksBakery {
 		
 		System.out.println(count);
 		
-		//long end = System.currentTimeMillis();
-		//System.out.println(end - start);
+		// long end = System.currentTimeMillis();
+		// System.out.println(end - start);
 		
 	}
 
 	
-	private static LinkedList<Integer> findQueueHavingCustomerWithMinimumPatienceLevel() {
+	private static ArrayList<Integer> findQueueHavingCustomerWithMinimumPatienceLevel() {
 
 		minPatientLevel = Integer.MAX_VALUE;
 		int minQueueID = 0;
+		int indexOfMin = 0;
 		
-		for (LinkedList<Integer> queue : queueIDList) {
+		for (ArrayList<Integer> queue : queueIDList) {
 			
 			int min = Collections.min(queue);
 			
 				if(min < minPatientLevel) {
 					minPatientLevel = min;
+					indexOfMin = queue.lastIndexOf(min) + 1;
 					minQueueID = queueIDList.indexOf(queue);
 				}
 			
 		}
+		
+		minPatientLevel = minPatientLevel - count;
+		ArrayList<Integer> queue = queueIDList.get(minQueueID);
+		
+		if(indexOfMin > minPatientLevel) {
+			count = count + minPatientLevel;
+			
+			return null;
+			
+		}
+		
+		if(indexOfMin <= minPatientLevel) {
+			count = count + indexOfMin;
+			
+			// remove first 'indexOfMin' elements of the queue
+			for (int i = 0; i < indexOfMin; i++) {
+				queue.remove(0);
+			}
+			
+		}
+		
 
-		return queueIDList.get(minQueueID);
+		return queue;
 	}
 	
 	
