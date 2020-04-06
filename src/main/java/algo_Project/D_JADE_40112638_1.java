@@ -8,18 +8,20 @@ import java.util.Map.Entry;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class SocratesCow {
+public class D_JADE_40112638_1 {
 
 	private static Map<String, HashMap<String, Integer>> graph = new HashMap<>();
 	private static Map<String,Integer> distanceFromSourceMap = new HashMap<>();
 	private static List<String> visitedList = new ArrayList<>();
-	private static PriorityQueue<Node> queue = new PriorityQueue<Node>(5);
+	private static PriorityQueue<Node> queue = new PriorityQueue<Node>();
 	
 	public static void main(String[] args) {
 
+		// long m0 = Runtime.getRuntime().freeMemory();
 		Scanner sc = new Scanner(System.in);
 		int p = Integer.parseInt(sc.nextLine());
-
+		
+		
 		for (int i = 0; i < p; i++) {
 
 			String line = sc.nextLine();
@@ -62,6 +64,8 @@ public class SocratesCow {
 		}
 		
 		// long end = System.currentTimeMillis();
+		// long m1 = Runtime.getRuntime().freeMemory();
+		// System.out.println(m0 - m1);
 		
 		System.out.println(minKey+" "+minValue);
 		

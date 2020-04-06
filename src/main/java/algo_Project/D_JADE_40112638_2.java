@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class Red {
+public class D_JADE_40112638_2 {
 
 	private static ArrayList<String> vertexList;
 	private static Map<String,ArrayList<String>> graph = new HashMap<>();
@@ -18,7 +18,7 @@ public class Red {
 		long count = 0;
 		long prime = 1000000007;
 		int n = Integer.parseInt(sc.nextLine());
-		long start = System.currentTimeMillis();
+		// long start = System.currentTimeMillis();
 		vertexList = new ArrayList<String>(n);
 		
 		
@@ -67,13 +67,14 @@ public class Red {
 			
 			if(checkSubsetIsDominating(subset)) {
 				count++;
+				System.out.println(subset);
 			}
 			
 		}
   
         System.out.println(count % prime); 
-        long end = System.currentTimeMillis();
-        System.out.println(end-start);
+        // long end = System.currentTimeMillis();
+        // System.out.println(end-start);
 		
 	}
 

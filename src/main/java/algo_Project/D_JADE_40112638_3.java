@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class MeeseeksBakery {
+public class D_JADE_40112638_3 {
 
 	private static ArrayList<ArrayList<Integer>> queueIDList;
 	private static int minPatientLevel;
@@ -94,7 +94,7 @@ public class MeeseeksBakery {
 		if(indexOfMin <= minPatientLevel) {
 			count = count + indexOfMin;
 			
-			// remove first 'indexOfMin' elements of the queue
+			// remove first '#indexOfMin' elements of the queue
 			for (int i = 0; i < indexOfMin; i++) {
 				queue.remove(0);
 			}
