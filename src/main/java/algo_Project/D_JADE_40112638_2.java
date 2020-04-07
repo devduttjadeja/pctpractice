@@ -18,7 +18,7 @@ public class D_JADE_40112638_2 {
 		long count = 0;
 		long prime = 1000000007;
 		int n = Integer.parseInt(sc.nextLine());
-		// long start = System.currentTimeMillis();
+		
 		vertexList = new ArrayList<String>(n);
 		
 		
@@ -30,23 +30,33 @@ public class D_JADE_40112638_2 {
 		for (int i = 0; i < vertexList.size(); i++) {
 		
 			String[] vertexU = vertexList.get(i).split("\\s+");
+			String u = vertexList.get(i);
 			int lU = Integer.parseInt(vertexU[0]);
 			int rU = Integer.parseInt(vertexU[1]);
+			
+			if(!graph.containsKey(u)) {
+				ArrayList<String> al = new ArrayList<String>();
+				graph.put(u, al);
+			}
+			
 			
 			for (int j = i+1; j < vertexList.size(); j++) {
 				
 				String[] vertexV = vertexList.get(j).split("\\s+");
+				String v = vertexList.get(j);
 				int lV = Integer.parseInt(vertexV[0]);
 				int rV = Integer.parseInt(vertexV[1]);
 				
 				if(Math.max(lU, lV) <= Math.min(rU, rV)) {
-					addEdgeToGraph(vertexList.get(i),vertexList.get(j));
+					addEdgeToGraph(u,v);
 				}
 				
 			}
 		}
 
 		sc.close();
+		
+		// long start = System.currentTimeMillis();
 		
 		double numberofsubsets = Math.pow(2, n);
 		
@@ -57,22 +67,20 @@ public class D_JADE_40112638_2 {
 			for (int j = 0; j < n; j++) {
 				
 				if( (i & (1 << j))  > 0) {
-				
 					subset.add(vertexList.get(j));
-					// System.out.println(vertexList[j]);
-					
 				}
 
 			}
 			
 			if(checkSubsetIsDominating(subset)) {
 				count++;
-				System.out.println(subset);
+				// System.out.println(subset);
 			}
 			
 		}
   
         System.out.println(count % prime); 
+        // System.out.println("check for base case when no edges");
         // long end = System.currentTimeMillis();
         // System.out.println(end-start);
 		
